@@ -1,0 +1,28 @@
+spring:
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            client-id: 1080071316636-0cdjuovfdcd6nisl4anle6sab7j2mieb.apps.googleusercontent.com
+            client-secret: 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
+  cloud:
+    gateway:
+      routes:
+      - id: microservice1
+        predicates:
+          - Path=/message/**
+        uri: "http://localhost:8081/message"
+        filters:
+          - TokenRelay=
+
+secret:
+  rsa-pub-key: |
+    -----BEGIN PUBLIC KEY-----
+    MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDXs2E3mY7QLJwRIXUp5Lj5i4r3
+    QLwnmX14XpUw6X1oaNfPnkxtU3P/77gmeXtOumUsgGzhJqfhmBLX+3lt/bq2V1J8
+    H+ffHdTT4Av6n115FhtD+BjIBSazugkPZmRH+j5tm6KgpDLEfo051XrciXvapjpg
+    2TJpJBmdvuXbiRCrhwIDAQAB
+    -----END PUBLIC KEY-----
+
+
